@@ -28,7 +28,7 @@ private:
 	double gpa;
 	string enrolledcourses[3];
 public:
-	student(string n, string c, int a, string con, string r, int s, double g) :person(n, c, a)
+	student(string n, string c, int a, string con, string r, int s, double g) :person(n, c, a,con)
 	{
 		rollno = r;
 		semester = s;
@@ -75,7 +75,7 @@ public:
 		cout << "courses : ";
 		for (int i = 0;i < 3;i++)
 		{
-			cout << enrollmentcourses[i] << " ";// Student ke tamam enrolled courses display karne ke liye
+			cout << enrolledcourses[i] << " ";// Student ke tamam enrolled courses display karne ke liye
 			cout << endl;
 		}
 	}
@@ -83,7 +83,7 @@ public:
 class faculty :public person
 {
 private:
-	string employee id;
+	string employeeID;
 	string department;
 	string designation;
 	string assignedcourses[3];
@@ -91,7 +91,7 @@ public:
 	faculty(string n, string c, int a, string con, string id, string dept, string desig, string courses[])
 		:person(n, c, a, con)
 	{
-		empolyeeid = id;
+		empolyeeID = id;
 		department = dept;
 		designation = desig;
 		for (int i = 0;i < 3;i++)
@@ -116,7 +116,7 @@ public:
 			cout << "assigned courses :";
 			for (int i = 0;i < 3;i++)
 			{
-				cout << assignedcourses[i]=coursesp[i] << "";// Faculty ke assigned courses ko object ke assignedCourses array me copy karne ke liye
+				cout << assignedcourses[i]<<" ";// Faculty ke assigned courses ko object ke assignedCourses array me copy karne ke liye
 				cout << endl;
 			}
 		}
@@ -130,13 +130,13 @@ private:
 	string role;
 	double salary;
 public:
-	staff(string, string c, int a, string con, string r, double sal) :person(n, c, a, con)
+	staff(string n,string id, string c, int a, string con, string r, double sal) :person(n, c, a, con)
 	{
 		staffid = id;
 		role = r;
 		salary = sal;
 	}
-	void display info()
+	void displayinfo()
 	{
 		cout << "staff" << endl;
 		cout << "name : " << name << endl;
