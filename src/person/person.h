@@ -1,3 +1,6 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include<iostream>
 #include <string>   // Name, CNIC, Contact aur dusri text values store karne ke liye
 using namespace std;
@@ -92,7 +95,7 @@ public:
 	faculty(string n, string c, int a, string con, string id, string dept, string desig, string courses[])
 		:person(n, c, a, con)
 	{
-		empolyeeID = id;
+		employeeID = id;
 		department = dept;
 		designation = desig;
 		
@@ -102,7 +105,6 @@ public:
 			assignedcourses[2] = courses[2];
 	
 		}
-	}
 	void displayinfo()
 	{
 		cout << "---------faculty--------" << endl;
@@ -110,7 +112,7 @@ public:
 		cout << "cnic :" << cnic << endl;
 		cout << "age : " << age << endl;
 		cout << "contact : " << contact << endl;
-		cout << "employee id : " << employeeid << endl;
+		cout << "employee id : " << employeeID << endl;
 		cout << "department : " << department << endl;
 		cout << "designation :" << designation << endl;
 		cout << "assigned courses :"
@@ -150,10 +152,11 @@ int main()
 	string studentcourses[3] ={ "opp","dSA","dbms",};// Student ke enrolled courses store karne ke liye array
 	string facultycourse[3] ={"oop","pf","dld"};// Faculty ko assign kiye gaye courses store karne ke liye array
 	person* p1 = new student("haseeb", "112323343-45", 20, "0333443545435", "25-cs-066", 4, 3.8, studentcourses);
-	person* p2=new faculty("ahmed","34345-6546",30,"f101","computer science","professor",facultycourse);
-	person* p3 = new staff("usman","1111111-22222",35,"234343243434","sl202","lab assitant",5000);
+	person* p2=new faculty("ahmed","34345-6546",30,"043645654-456", "f101", "computer science", "professor", facultycourse);
+	person* p3 = new staff("usman","sl202","1111111-22222",35,"234343243434","lab assistant",5000);
 	p1->displayinfo();
 	p2->displayinfo();
 	p3->displayinfo();
 	return 0;
-} 
+}
+#endif
