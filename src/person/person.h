@@ -147,16 +147,4 @@ public:
 		cout << "salary" << salary << endl;
 	}
 };
-int main()
-{
-	string studentcourses[3] ={ "opp","dSA","dbms",};// Student ke enrolled courses store karne ke liye array
-	string facultycourse[3] ={"oop","pf","dld"};// Faculty ko assign kiye gaye courses store karne ke liye array
-	person* p1 = new student("haseeb", "112323343-45", 20, "0333443545435", "25-cs-066", 4, 3.8, studentcourses);
-	person* p2=new faculty("ahmed","34345-6546",30,"043645654-456", "f101", "computer science", "professor", facultycourse);
-	person* p3 = new staff("usman","sl202","1111111-22222",35,"234343243434","lab assistant",5000);
-	p1->displayinfo();
-	p2->displayinfo();
-	p3->displayinfo();
-	return 0;
-}
 #endif
