@@ -1,3 +1,6 @@
+#ifndef COURSE_H
+#define COURSE_H
+
 #include<iostream>
 #include<string>
 #include"person.h"
@@ -22,6 +25,9 @@ private:
 	int enrolledcount;
 
 	student* enrolledstudents[50];
+
+	student* waitinglist[50];
+	int waitingcount;
 public:
 	course(string code, string name, int credits, faculty* inst, int capacity)
 	{
@@ -31,7 +37,7 @@ public:
 		instructor = inst;
 		maxcapacity = capacity;
 		enrolledcount = 0;
-
+		waitingcount = 0;
 	}
 	string getcoursecode()
 	{
@@ -69,10 +75,11 @@ public:
 	{
 		if (enrolledcount >= maxcapacity)
 		{
+			enrolledstudents[enrolledcount] = s;
+			enrolledcount++;
 			throw capacityexceededexception();
 		}
-		enrolledstudents[enrolledcount] = s;
-		enrolledcount++;
+		
 	}
 	bool operator==(course& c)
 	{
@@ -80,7 +87,7 @@ public:
 	}
 	student** operator+(course& c)
 	{
-		staic student* merged[100];
+		static student* merged[100];
 		int k = 0;
 
 		for (int i = 0;i < waitingcount;i++)
@@ -109,23 +116,23 @@ public:
 class enrollment
 {
 private:
-	student* student;
-	course* course;
-	string enrllmentdate;
+	student* enrolledstudent;
+	course* enrolledcourse;
+	string enrollmentdate;
 	char grade;
 
 public:
 	enrollment(atudent* s, course* c, string date, char g)
 	{
-		student = s;
-		course = c;
+		enrolledstudent = s;
+		enrolledcourse = c;
 		enrollmentdate = date;
 		grade = g;
 	}
 	void dispaly()
 	{
 
-		cou << "enrollement date " << enrollmentdate << endl;
+		cout << "enrollement date " << enrollmentdate << endl;
 		cout << "grade" << endl;
 	}
 };
@@ -134,7 +141,7 @@ int main()
 	string facultycourses[3] = {"oop","pf","dld"};
 	faculty f1("naveed", "1232-34534", 50,"348635345","f1014","computer science","prof", facultycourses);
 
-	string studentcourses[3] = { "oop","dsa","dbms" }
+	string studentcourses[3] = { "oop","dsa","dbms" };
 	student s1("haseeb","111111-1111",20 ,"345875","25-cs-066",4 ,3.8 , studentcourses);
 
 	student s2("irfan", "234324324-45", 20, "3584635", "25-cs-131", 4, 3.0, studentcourses);
@@ -153,12 +160,12 @@ int main()
 		c1.enrollstudent(&s1);
 		c1.enrollstudent(&s2);
 
-		student s3("Hassan","33333-3333333-3",20,"03003334444","23-CS-003",4,3.2,studentCourses);
+		student s3("Hassan","33333-3333333-3",20,"03003334444","23-CS-003",4,3.2,studentcourses);
 
-		c1.enrollStudent(&s3);
+		c1.enrollstudent(&s3);
 
 	}
-	catch (capacityexceededexpection e)
+	catch (capacityexceededexception e)
 	{
 		e.message();
 	}
@@ -171,3 +178,4 @@ int main()
 	e1.display();
 	return 0;
 }
+#endif
