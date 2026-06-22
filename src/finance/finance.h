@@ -4,7 +4,7 @@
 #include<string>
 using namespace std;
 
-constant int MAXITEMS = 3;//number of items fixed rakhna k liaya  
+const int MAXITEMS = 3;//number of items fixed rakhna k liaya  
 class feerecord
 {
 private:
@@ -27,8 +27,9 @@ public:
 		semesterfee = sem;
 		hostelfee = hostel;
 		libraryfine = fine;
+		calculatebalance();
 	}
-	feerecode(const feerecord& obj)
+	feerecord(const feerecord& obj)
 	{
 		studentref = obj.studentref;
 		semesterfee = obj.semesterfee;
@@ -40,7 +41,7 @@ public:
 	}
 	//Ye Copy Assignment Operator hai. Jab ek existing object ki values doosre existing object mein copy karni hoti hain (obj1 = obj2;), tab ye function automatically call hota hai.
 		//Ye obj ki saari data members ko current object mein copy karta hai aur return *this current object ko wapas return karta hai.
-	FeeRecord& operator=(const FeeRecord& obj)
+	feerecord& operator=(const feeRecord& obj)
 	{
 		if (this != &obj)
 		{
@@ -51,7 +52,7 @@ public:
 			totalpaid = obj.totalpaid;
 			balance = obj.balance;
 		}
-		retrun* this;
+		return* this;
 		}
 	void operator-=(double payment)//Ye obj ki saari data members ko current object mein copy karta hai aur return *this current object ko wapas return karta hai.
 	{
@@ -60,11 +61,11 @@ public:
 	}
 	void display()
 	{
-		cout << "Student Reference : " << studentRef << endl;
-		cout << "Semester Fee : " << semesterFee << endl;
-		cout << "Hostel Fee : " << hostelFee << endl;
-		cout << "Library Fine : " << libraryFine << endl;
-		cout << "Total Paid : " << totalPaid << endl;
+		cout << "Student Reference : " << studentref << endl;
+		cout << "Semester Fee : " << semesterfee << endl;
+		cout << "Hostel Fee : " << hostelfee << endl;
+		cout << "Library Fine : " << libraryfine << endl;
+		cout << "Total Paid : " << totalpaid << endl;
 		cout << "Balance : " << balance << endl;
 	}
 };
@@ -79,13 +80,13 @@ private:
 public:
 	invoice(string d, string list[], double total)
 	{
-		invoice counter++;
+		invoicecounter++;
 		invoiceid = invoicecounter;
 
 		date = d;
 		totalamount = total;
 
-		item = new string[MAXITEMS];
+		items = new string[MAXITEMS];
 		for (int i = 0;i <MAXITEMS;i++)
 		{
 			items[i] = list[i];
@@ -106,7 +107,7 @@ public:
 		cout << "date" << date << endl;
 
 		cout << "items" << endl;
-		for (int i = items[i] < MAXITEMS;i++)
+		for (int i = 0;i < MAXITEMS;i++)
 		{
 			cout << items[i] << endl;
 		}
@@ -114,36 +115,4 @@ public:
 	}
 };
 int invoice::invoicecounter = 0;
-int main()
-{
-	feerecord student1("25-cs-066", 50000, 10000, 500);
-	student1.dsplay();
-
-	student1 -= 10000;
-	student1.display();//using operator
-
-	feerecord student2(student1);
-	student2.display();
-
-	feerecord student3("25-cs-131", 600000, 20000, 1000);//copy assignment operator
-	student3 = student1;
-	student3.display();
-
-	//invoice item------------
-	string list12[MAXITEMS]
-	{
-		"semester fee",
-		"hostel fee",
-		"library fine"
-	};
-	invoice in1("20-june-2026", list1, 60500);
-	invoice in2("21-june-2026", list1, 60500);
-
-	in1.display();
-	in2.display();
-
-	cout << invoice::getinvoicecounter() << endl;
-
-	return 0;
-
-}
+#endif
