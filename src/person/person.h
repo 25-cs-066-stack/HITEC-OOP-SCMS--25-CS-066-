@@ -80,7 +80,7 @@ public:
 		cout << "courses : "
 			<< enrolledcourses[0] << ", "
 			<< enrolledcourses[0] << ", "
-			<< enrolledcourses[0] << ", " << endl;
+			<< enrolledcourses[0] << endl;
 
 	}
 };
