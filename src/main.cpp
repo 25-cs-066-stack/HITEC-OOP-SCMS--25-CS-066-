@@ -1,10 +1,10 @@
 #include<iostream>
-#include"person.h"
-#include"course.h"
-#include"hostel.h"
-#include"finance.h"
-#include"library.h"
-#include"utilities.h"
+#include"src/person/person.h"
+#include"src/course/course.h"
+#include"src/hostel/hostel.h"
+#include"src/finance/finance.h"
+#include"src/library/library.h"
+#include"src/utilities/utilities.h"
 using namespace std;
 
 int main()

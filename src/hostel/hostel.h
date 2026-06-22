@@ -3,7 +3,7 @@
 
 #include<iostream>
 #include<string>
-#include"person.h"
+#include"../person/person.h"
 using namespace std;
 
 const int MAXROOMS = 5;
