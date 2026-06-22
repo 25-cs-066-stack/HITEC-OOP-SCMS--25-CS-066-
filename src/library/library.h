@@ -1,3 +1,6 @@
+#ifndef LIBRARY_H
+#define LIBRARY_H
+
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -17,7 +20,7 @@ public:
 		cout << " over due ....fine= rs." << fine << endl;
 	}
 };
-struct issuerecord
+struct issuedrecord
 {
 	string rollno;
 	string itemid;
@@ -28,11 +31,11 @@ protected:
 	string itemid;
 	string title;
 	string author;
-	int publictaionyear;
+	int publicationyear;
 public:
 	libraryitem(string id, string t, string a, int y)
 	{
-		item = id;
+		itemid = id;
 		title = t;
 		author = a;
 		publicationyear = y;
@@ -53,14 +56,14 @@ public:
 		cout << "author : " << author << endl;
 		cout << "publication year : " << publicationyear << endl;
 	}
-	virtual ~libraryitem()
+	virtual ~libraryitem() {}
 };
 class book :public libraryitem
 {
 private:
 	string ISBN;
 	string genre;
-	int copiesavailiable;
+	int copiesavailable;
 public:
 	book(string id, string t, string a, int y, string isbn, string g, int copies) :libraryitem(id, t, a, y)
 	{
@@ -72,7 +75,7 @@ public:
 	{
 		if (copiesavailable > 0)
 		{
-			copiesavailiable--;
+			copiesavailable--;
 			cout << "book issued sucessfully" << endl;
 		}
 		else
@@ -82,7 +85,7 @@ public:
 	}
 	void display()
 	{
-		library::display();
+		libraryitem::display();
 		cout << "isbn is " << ISBN << endl;
 		cout << "genre " << genre << endl;
 		cout << "availble copies " << copiesavailable << endl;
@@ -108,9 +111,10 @@ public:
 	void display()
 	{
 		libraryitem::display();
-		cout << "issn  " << issn << endl;
+		cout << "issn  " << ISSN << endl;
 		cout << "volume  " << volume << endl;
 		cout << "issue number" << issuenumber << endl;
+	}
 };
 	class library
 	{
@@ -120,10 +124,10 @@ public:
 		issuedrecord issued[10];
 		int issuedcount;
 
-	pulic:
+	public:
 		library()
 		{
-			cout = 0;
+			count = 0;
 			issuedcount = 0;
 		}
 		void additem(libraryitem* item)
@@ -154,7 +158,7 @@ public:
 			for (int i = 0;i < count;i++)
 			{
 				file << catalog[i]->getitemid() << endl;
-				file << catalog[i]->getitle() << endl;
+				file << catalog[i]->gettitle() << endl;
 			}
 			file.close();
 			cout << "data saved " << endl;
@@ -185,35 +189,13 @@ public:
 		{
 			if (dayslate > 0)
 			{
-				throw overdueexception(dayslater * 100);
+				throw overdueexception(dayslate* 100);
 			}
 			cout << "item returned sucessfully" << endl;
 		}
 
 	};
-	int main()
-	{
-		library lib;
-		book b1("b121", "oop", "haseeb", 2025, "3243-56546", "programming", 5);
-		Journal j1("J101", "AI Journal", "Ahmed", 2024, "ISSN-111", 2, 5);
-		lib.additem(&b1);
-		lib.additem(&j1);
-
-		lib.searchbytitle("oop");
-		lib.savetofie();
-		lib.loadfromfile();
-		lib.issueitem("25-cs-066", "b101");
-		try
-		{
-			library.returnitem(5);
-		}
-		catch (overexception e)
-		{
-			e.message();
-		}
-		return 0;
-	}
-
+	 #endif 
 
 
 
